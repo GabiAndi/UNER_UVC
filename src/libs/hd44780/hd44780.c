@@ -84,7 +84,7 @@ void lcd_init(void)
 	lcd_write(0x02, 0, LCD_WRITE_4BITS);
 	_delay_us(40);
 
-	// Se establece el modo de 4bits, una linea y 5x8 puntos
+	// Se establece el modo de 4bits, dos lineas y 5x8 puntos
 	lcd_cmd(LCD_CMD_FUNC_SET | LCD_CMD_LINES_2 | LCD_CMD_DOT_5x8);
 
 	// Apagado
@@ -127,7 +127,38 @@ void lcd_set_cursor(uint8_t cursor)
 void lcd_gotoxy(uint8_t x, uint8_t y)
 {	
 	// Ubica el cursor en pantalla
-	lcd_cmd(LCD_DDRAM + x + y * 0x40);
+	#if (LCD_ROWS == 2)
+	if (y == 0)
+	{
+		lcd_cmd(LCD_DDRAM + x);
+	}
+
+	else if (y == 1)
+	{
+		lcd_cmd(LCD_DDRAM + x + 0x40);
+	}
+
+	#elif (LCD_ROWS == 4)
+	if (y == 0)
+	{
+		lcd_cmd(LCD_DDRAM + x);
+	}
+
+	else if (y == 1)
+	{
+		lcd_cmd(LCD_DDRAM + x + 0x40);
+	}
+
+	else if (y == 2)
+	{
+		lcd_cmd(LCD_DDRAM + x + 0x14);
+	}
+
+	else if (y == 3)
+	{
+		lcd_cmd(LCD_DDRAM + x + 0x54);
+	}
+	#endif
 }
 
 void lcd_cls(void)

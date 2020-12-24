@@ -15,7 +15,7 @@ DEFS = -DF_CPU=16000000UL \
 		-D__AVR_ATmega328P__
 
 FLASH_MCU = m328p
-FLASH_PORT = /dev/ttyACM0
+FLASH_PORT = /dev/ttyUSB0
 FLASH_PROG = arduino
 FLASH_BAUD = 115200
 #################################################################################
@@ -39,7 +39,6 @@ TARGET = firmware
 DIRS = libs \
 		libs/hd44780 \
 		libs/ticker \
-		libs/adc \
 		libs/wdt
 
 SOURCEDIRS = $(foreach dir, $(DIRS), $(addprefix $(SOURCEDIR)/, $(dir)))
