@@ -39,7 +39,8 @@ TARGET = firmware
 DIRS = libs \
 		libs/hd44780 \
 		libs/ticker \
-		libs/wdt
+		libs/wdt \
+		libs/encoder
 
 SOURCEDIRS = $(foreach dir, $(DIRS), $(addprefix $(SOURCEDIR)/, $(dir)))
 OBJDIRS = $(foreach dir, $(DIRS), $(addprefix $(OBJDIR)/, $(dir)))

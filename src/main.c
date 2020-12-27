@@ -1,6 +1,6 @@
 #include "uvc.h"
 
-int main (void)
+int main(void)
 {
 	uvc_init();
 

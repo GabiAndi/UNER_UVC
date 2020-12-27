@@ -1,12 +1,12 @@
 #ifndef TICKER_H
 #define TICKER_H
 
+#include "ticker_settings.h"
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 #include <stdint.h>
-
-#define TICKER_MAX_USE                 	    10U	// Tickers como maximo
 
 #define TICKER_LOW_PRIORITY					0U	// Prioridad baja (se ejecuta en blucle principal)
 #define TICKER_HIGH_PRIORITY				1U	// Prioridad alta (se ejecuta en interrupcion)
