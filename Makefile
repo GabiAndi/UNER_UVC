@@ -85,10 +85,7 @@ directories:
 	$(MKDIR) $(OBJDIRS)
 
 clean:
-	$(RM) $(OBJS)
-	$(RM) $(OBJDIRS)
-	$(RM) $(OBJDIR)
-	$(RM) $(BUILDDIR)/*.*
+	$(RM) $(BUILDDIR)
 
 flash: all
 	$(AVR_DUDE) -p $(FLASH_MCU) -P $(FLASH_PORT) -c $(FLASH_PROG) -b $(FLASH_BAUD) -D -U flash:w:"$(BUILDDIR)/$(TARGET).hex":i
